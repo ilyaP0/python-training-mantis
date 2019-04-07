@@ -6,13 +6,12 @@ class SessionHelper:
         self.app = app
 
 
-    def Login(self, username, password):
+    def Login(self, username="administrator", password="root"):
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_element_by_name("username").send_keys(username)
-        wd.find_element_by_name("password").clear()
         wd.find_element_by_name("password").send_keys(password)
-        wd.find_element_by_xpath("//input[@class='button']").click()
+        wd.find_element_by_css_selector('input[type="submit"]').click()
 
     def Logout(self):
         wd = self.app.wd
